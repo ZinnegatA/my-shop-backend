@@ -1,0 +1,15 @@
+getProductsList:
+  handler: api/products/getProductsList/index.handler
+  timeout: 30
+  events:
+    - httpApi:
+        method: get
+        path: '/products'
+
+getProductsById:
+  handler: api/products/getProductsById/index.handler
+  timeout: 30
+  events:
+    - httpApi:
+        method: get
+        path: '/products/{productId}'

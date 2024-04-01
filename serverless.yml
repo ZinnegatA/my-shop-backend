@@ -1,0 +1,6 @@
+service: products-service
+frameworkVersion: '3'
+functions: ${file(./serverless/functions.yml)}
+custom: ${file(./serverless/custom.yml)}
+provider: ${file(./serverless/provider.yml)}
+plugins: ${file(./serverless/plugins.yml)}

@@ -1,0 +1,7 @@
+functionsBasePath: src/functions
+primaryRegion: us-east-1
+secondaryRegion: us-east-1
+webpack:
+  webpackConfig: 'webpack.config.ts'
+  includeModules: true
+  packager: 'npm'

@@ -1,0 +1,86 @@
+openapi: '3.0.0'
+info:
+  title: ProductsService Endpoints
+  description: AWS API Gateway endpoints to work with products service
+  version: 1.0.0
+
+paths:
+  /products:
+    get:
+      summary: Get products
+      description: Send request to get products list
+      responses:
+        '200':
+          $ref: '#/components/schemas/Product'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /products/{productId}:
+    get:
+      summary: Get product by ID
+      description: Send request to get products list
+      parameters:
+        - name: productId
+          in: path
+          description: unique product's ID
+          required: true
+          schema:
+            type: string
+            example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    BadRequestError:
+      description: Path parameters are invalid
+      content:
+        application/json:
+          schema:
+            type: string
+            example: 'Path parameters not provided'
+    NotFoundError:
+      description: Product with provided ID was not found
+      content:
+        application/json:
+          schema:
+            type: string
+            example: 'Product with id 10 not found'
+    InternalServerError:
+      description: Common server error
+      content:
+        application/json:
+          schema:
+            type: string
+            example: 'Internal Server Error'
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of existing product.
+          example: '12'
+        brand:
+          type: string
+          description: Name of product's brand.
+          example: 'Hyundai'
+        year:
+          type: number
+          description: The manufacture year of a product.
+          example: 2022
+        price:
+          type: number
+          description: Price of a product.
+          example: 10000

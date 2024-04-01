@@ -1,0 +1,8 @@
+name: aws
+runtime: nodejs18.x
+timeout: 30
+stage: dev
+region: us-east-1
+endpointType: REGIONAL
+logRetentionInDays: 90
+versionFunctions: true
